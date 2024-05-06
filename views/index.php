@@ -1,33 +1,36 @@
 <?php
 
-require '../models/databse.php';
+require '../models/database.php';
 
 
 
 
-// class DatabaseTest 
-// {
-//     private $db;
+class test 
+{
+    private $con;
 
-//     function __construct()
-//     {
-//         require_once 'database.php'; // Assuming your database class is in a file named database.php
-//         $this->db = new Database();
-//     }
+    function __construct()
+    {
+        $this->con = new mysqli('localhost', 'root', '', 'database');
+        if ($this->con->connect_error) {
+            die("Connection failed: " . $this->con->connect_error);
+        }
+    }
 
-//     function testConnection()
-//     {
-//         $con = $this->db->getConnection();
-//         if ($con->connect_errno) {
-//             echo "Failed to connect to MySQL: " . $con->connect_error;
-//         } else {
-//             echo "Connected successfully!";
-//             $con->close();
-//         }
-//     }
-// }
+    function getConnection()
+    {
+        return $this->con;
+    }
+}
 
-// $test = new DatabaseTest();
-// $test->testConnection();
+// Test the database connection
+$database = new test();
+$con = $database->getConnection();
 
+if ($con->connect_error) {
+    echo "Failed to connect to MySQL: " . $con->connect_error;
+} else {
+    echo "Connected successfully!";
+    $con->close();
+}
 // ?>
