@@ -3,6 +3,7 @@
 class user
 
 {
+    private $auth = new AuthController();
     private $username;
     private $password;
 
@@ -29,7 +30,7 @@ class user
     }
     public function login()
     {
-        
+        $this->auth->login($this);
     }
 
 
