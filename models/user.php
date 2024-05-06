@@ -63,7 +63,59 @@ class user
     {
         $this->shapping_info=$shapping_info;
     }
-    
+
+    // public add_payment_method(){
+
+    // }
+
+    public function add_payment_method()
+    {
+    }
+
+    public function remove_payment_method()
+    {
+    }
+
+    public function search()
+    {
+    }
+
+    public function filter()
+    {
+    }
+
+    public function refund()
+    {
+    }
+
+    public function change_shipping_address()
+    {
+    }
+
+    public function view_orders_history()
+    {
+    }
+
+    public function chat_with_ai()
+    {
+    }
+
+    public function view_recommendation()
+    {
+    }
+
+    public function update_profile()
+    {
+    }
+
+    public function register()
+    {
+    }
+
+    public function forget_password()
+    {
+    }
+
 
 }
 
