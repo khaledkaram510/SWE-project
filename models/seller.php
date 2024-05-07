@@ -31,6 +31,9 @@ class seller
   }
   public function listItem($cat)
   { 
+    if ($cat == null){
+      $str="SELECT * from items";
+    }else
     $str="SELECT * from items where catagory_name='$cat'";
     $result = $this->db->query($str);
     if (!$result) {

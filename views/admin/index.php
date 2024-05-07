@@ -1,20 +1,26 @@
 <?php
 require_once('../../models/seller.php');
 $seller = new seller();
-// $db = new database();
-// $con=$db->openConnection();
-// if(!$con)
-// {
-//   echo "seller Not Connected";
-// }
+$db = new database();
+$con=$db->openConnection();
+if(!$con)
+{
+  echo "seller Not Connected";
+}
+$str="SELECT catagory_name from items ORDER BY catagory_name ASC";
+$result = $db->query($str);
+// $arr = mysqli_fetch_array($result);
 
-
+// print_r($arr);
+// print_r($arr);
+// print_r($arr);
+// print_r($arr);
 function create_cards($selle,$catagoty){
   // $seller = new seller();
   $result = $selle->listItem($catagoty);
   
   // echo'hello';
-  echo $result;
+  // echo $result;
   if (!$result) {
     echo '
     <h1>
@@ -24,10 +30,10 @@ function create_cards($selle,$catagoty){
   }else{
     echo '<h1>'.$catagoty.'</h1>
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">';
-    $array = mysqli_fetch_array($result);
-    echo $array;
-    while($array){
-    echo '**
+    // $array = mysqli_fetch_array($result);
+    // echo $array;
+    while($array = mysqli_fetch_array($result)){
+    echo '
       <div class="col mb-5">
         <div class="card h-100">
             <!-- Product image-->
@@ -113,8 +119,14 @@ function create_cards($selle,$catagoty){
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
               <?php //sy_hello()
-              create_cards($seller,"electronics");?>
-              <!-- <h1>hello</h1> -->
+                $catTmp = null;
+                while ($arr = mysqli_fetch_array($result)) {
+                    if($catTmp != $arr["catagory_name"])
+                        create_cards($seller,$arr["catagory_name"]);
+                    $catTmp = $arr["catagory_name"];
+                }
+                ?>
+            <!-- <h1>hello</h1> -->
             </div>
         </section>
         <!-- Footer-->
