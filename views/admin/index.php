@@ -75,7 +75,7 @@ function create_cards($selle,$catagoty){
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet" />
-        <link href="../css/addstyle.css" rel="stylesheet" />
+        <link href="../css/adminstyle.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Navigation-->
@@ -131,7 +131,9 @@ function create_cards($selle,$catagoty){
                 }
                 ?>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="add card">+</div>
+                    <a class="a" href="add_items.php">
+                        <div class="add card">+</div>
+                    </a>
                 </div>
             <!-- <h1>hello</h1> -->
             </div>
