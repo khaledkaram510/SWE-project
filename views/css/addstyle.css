@@ -14,7 +14,6 @@ img{
   color: #b3b5b7;
   cursor: pointer;
   border-width: 4px;
-<<<<<<< HEAD:views/css/addstyle.css
 }
 .logo-img {
   width: 30px;
@@ -39,16 +38,3 @@ img{
   left: 50%;
   transform: translateX(-50%);
 }
-=======
-  transition: background-color 0.2s;
-}
-.add:hover{
-  background-color: #ebedef;
-}
-.a{
-  color: transparent;
-}
-.a:hover{
-  color: transparent;
-}
->>>>>>> 101e35ddaca2c93b286444994e2393821c794e13:views/css/adminstyle.css
