@@ -9,12 +9,7 @@ if(!$con)
 }
 $str="SELECT catagory_name from items ORDER BY catagory_name ASC";
 $result = $db->query($str);
-// $arr = mysqli_fetch_array($result);
 
-// print_r($arr);
-// print_r($arr);
-// print_r($arr);
-// print_r($arr);
 function create_cards($selle,$catagoty){
   // $seller = new seller();
   $result = $selle->listItem($catagoty);
@@ -130,9 +125,6 @@ function create_cards($selle,$catagoty){
                     $catTmp = $arr["catagory_name"];
                 }
                 ?>
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="add card">+</div>
-                </div>
             <!-- <h1>hello</h1> -->
             </div>
         </section>
