@@ -9,11 +9,11 @@ $seller = new seller();
 // }
 
 
-function create_cards($c,$selle,$catagoty){
+function create_cards($selle,$catagoty){
   // $seller = new seller();
   $result = $selle->listItem($catagoty);
   
-  echo'hello';
+  // echo'hello';
   echo $result;
   if (!$result) {
     echo '
@@ -22,7 +22,8 @@ function create_cards($c,$selle,$catagoty){
     </h1>
     ';
   }else{
-    echo '<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">';
+    echo '<h1>'.$catagoty.'</h1>
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">';
     $array = mysqli_fetch_array($result);
     echo $array;
     while($array){
@@ -52,10 +53,6 @@ function create_cards($c,$selle,$catagoty){
     }
     echo '</div>';
   }
-}
-function sy_hello(){
-  echo 'hello';
-
 }
 ?>
 <!DOCTYPE html>
@@ -115,9 +112,8 @@ function sy_hello(){
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
-              <h1>electronics</h1>
               <?php //sy_hello()
-              create_cards($c,$seller,"electronics");?>
+              create_cards($seller,"electronics");?>
               <!-- <h1>hello</h1> -->
             </div>
         </section>
