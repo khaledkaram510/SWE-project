@@ -15,3 +15,26 @@ img{
   cursor: pointer;
   border-width: 4px;
 }
+.logo-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px; 
+}
+
+/* Style for the Arabic text */
+.store-name-arabic {
+  font-family: Arabic_font;
+}
+/* styles.css */
+
+.grey-pill {
+  background-color: #212529; /* Grey background color */
+  color: #ffffff; /* Black text color */
+  padding: 10px 40px; /* Adjust padding as needed */
+  border-radius: 10px; /* Adjust border radius to make it pill-shaped */
+  display: inline-block; /* Display as inline-block to fit content */
+
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
