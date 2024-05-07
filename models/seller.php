@@ -31,7 +31,7 @@ class seller
   }
   public function listItem($cat)
   { 
-    $str="SELECT * from items where category='$cat'";
+    $str="SELECT * from items where catagory_name='$cat'";
     $result = $this->db->query($str);
     if (!$result) {
       return false;
