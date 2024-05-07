@@ -1,4 +1,6 @@
 <?php
+require_once '../../models/database.php';
+
 class manger{
   private $mangerID;
   private $mangerName;
@@ -8,7 +10,7 @@ class manger{
 
   public function __construct()
   {
-    $this->db = new database();
+    $this->db = new database;
     $con = $this->db->openConnection();
     if(!$con)
     {
