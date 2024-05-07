@@ -15,3 +15,12 @@ img{
   cursor: pointer;
   border-width: 4px;
 }
+.add:hover{
+  background-color: #b3b5b7;
+}
+.a{
+  color: transparent;
+}
+.a:hover{
+  color: transparent;
+}
