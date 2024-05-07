@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 06, 2024 at 04:01 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: May 07, 2024 at 07:15 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -76,6 +76,16 @@ CREATE TABLE `items` (
   `offer` int(11) NOT NULL,
   `catagory_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`i_id`, `i_name`, `i_description`, `price`, `image`, `rate`, `ammount`, `offer`, `catagory_name`) VALUES
+(1, 'first product', 'this first item descrition', 100, '../images/6.jpg', 0, 10, 0, 'electronics'),
+(2, 'second product', 'this is the second product', 200, '../images/06-22-465.jpg', 0, 5, 0, 'electronics'),
+(3, 'third product', 'this third product description', 150, '../images/05-38-023.jpg', 0, 8, 0, 'food'),
+(4, 'fourth product', 'this fourth product description', 300, '../images/05-40-482.jpg', 0, 30, 0, 'food');
 
 -- --------------------------------------------------------
 
@@ -234,7 +244,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `i_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `i_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`

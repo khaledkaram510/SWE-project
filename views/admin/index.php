@@ -27,7 +27,7 @@ function create_cards($selle,$catagoty){
     $array = mysqli_fetch_array($result);
     echo $array;
     while($array){
-    echo '
+    echo '**
       <div class="col mb-5">
         <div class="card h-100">
             <!-- Product image-->

@@ -22,7 +22,7 @@ class seller
 
   public function __construct()
   {
-    $this->db = new database();
+    $this->db = new database;
     $con = $this->db->openConnection();
     if(!$con)
     {
