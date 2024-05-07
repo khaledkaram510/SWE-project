@@ -1,6 +1,6 @@
 <?php 
 
-class DBController
+class database
 {
     
     public $dbHost="localhost";
@@ -19,6 +19,7 @@ class DBController
         }
         else
         {
+            $connection = $this->connection;
             return true;
         }
     }
@@ -34,49 +35,52 @@ class DBController
             echo "Connection is not opened";
         }
     }
-
-    public function select($qry)
-    {
-        $result=$this->connection->query($qry);
-        if(!$result)
-        {
-            echo "Error : ".mysqli_error($this->connection);
-            return false;
-        }
-        else
-        {
-             return $result->fetch_all(MYSQLI_ASSOC);
-        }
-
+    public function query($query){
+        return mysqli_query($this->connection,$query);
     }
-    public function insert($qry)
-    {
-        $result=$this->connection->query($qry);
-        if(!$result)
-        {
-            echo "Error : ".mysqli_error($this->connection);
-            return false;
-        }
-        else
-        {
-             return $this->connection->insert_id;
-        }
 
-    }
-    public function delete($qry)
-    {
-        $result=$this->connection->query($qry);
-        if(!$result)
-        {
-            echo "Error : ".mysqli_error($this->connection);
-            return false;
-        }
-        else
-        {
-             return $result;
-        }
+    // public function select($qry)
+    // {
+    //     $result=$this->connection->query($qry);
+    //     if(!$result)
+    //     {
+    //         echo "Error : ".mysqli_error($this->connection);
+    //         return false;
+    //     }
+    //     else
+    //     {
+    //          return $result->fetch_all(MYSQLI_ASSOC);
+    //     }
 
-    }
+    // }
+    // public function insert($qry)
+    // {
+    //     $result=$this->connection->query($qry);
+    //     if(!$result)
+    //     {
+    //         echo "Error : ".mysqli_error($this->connection);
+    //         return false;
+    //     }
+    //     else
+    //     {
+    //          return $this->connection->insert_id;
+    //     }
+
+    // }
+    // public function delete($qry)
+    // {
+    //     $result=$this->connection->query($qry);
+    //     if(!$result)
+    //     {
+    //         echo "Error : ".mysqli_error($this->connection);
+    //         return false;
+    //     }
+    //     else
+    //     {
+    //          return $result;
+    //     }
+
+    // }
 
 }
 
