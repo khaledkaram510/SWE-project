@@ -1,15 +1,20 @@
 <?php
 require_once('../../models/seller.php');
 $seller = new seller();
-$db = new database();
-$con=$db->openConnection();
-if(!$con)
-{
-  echo "seller Not Connected";
-}
-function create_cards($seller,$catagoty){
+// $db = new database();
+// $con=$db->openConnection();
+// if(!$con)
+// {
+//   echo "seller Not Connected";
+// }
+
+
+function create_cards($c,$selle,$catagoty){
   // $seller = new seller();
-  $result = $seller->listItem($catagoty);
+  $result = $selle->listItem($catagoty);
+  
+  echo'hello';
+  echo $result;
   if (!$result) {
     echo '
     <h1>
@@ -17,33 +22,40 @@ function create_cards($seller,$catagoty){
     </h1>
     ';
   }else{
+    echo '<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">';
     $array = mysqli_fetch_array($result);
+    echo $array;
     while($array){
     echo '
-    <div class="col mb-5">
-      <div class="card h-100">
-          <!-- Product image-->
-          <img class="card-img-top" src="'.$array["image"].'" alt="..." />
-          <!-- Product details-->
-          <div class="card-body p-4">
-              <div class="text-center">
-                  <!-- Product name-->
-                  <h5 class="fw-bolder">'.$array["i_name"].'</h5>
-                  <!-- Product price-->
-                  $'.$array["price"].' 
-                  ammount: '.$array["ammount"].'
-                  catagory: '.$array["catagory_name"].'
-                  rate: '.$array["rate"].'
-              </div>
-          </div>
-          <!-- Product actions-->
-          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-              <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-          </div>
-      </div>
-    </div> ';
+      <div class="col mb-5">
+        <div class="card h-100">
+            <!-- Product image-->
+            <img class="card-img-top" src="'.$array["image"].'" alt="..." />
+            <!-- Product details-->
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <!-- Product name-->
+                    <h5 class="fw-bolder">'.$array["i_name"].'</h5>
+                    <!-- Product price-->
+                    $'.$array["price"].' 
+                    ammount: '.$array["ammount"].'
+                    catagory: '.$array["catagory_name"].'
+                    rate: '.$array["rate"].'
+                </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+            </div>
+        </div>
+      </div> ';
     }
+    echo '</div>';
   }
+}
+function sy_hello(){
+  echo 'hello';
+
 }
 ?>
 <!DOCTYPE html>
@@ -103,9 +115,10 @@ function create_cards($seller,$catagoty){
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
-                </div>
+              <h1>electronics</h1>
+              <?php //sy_hello()
+              create_cards($c,$seller,"electronics");?>
+              <!-- <h1>hello</h1> -->
             </div>
         </section>
         <!-- Footer-->

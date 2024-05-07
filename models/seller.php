@@ -36,9 +36,11 @@ class seller
     if (!$result) {
       return false;
     }
+    echo "khaled";
     if((mysqli_num_rows($result)) == 0){
       return false;
     }
+    echo "khaled";
     return $result;
   }
   public function deleteItem($item_id)

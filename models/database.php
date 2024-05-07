@@ -36,6 +36,7 @@ class database
         }
     }
     public function query($query){
+        echo 'khaled';
         return mysqli_query($this->connection,$query);
     }
 
