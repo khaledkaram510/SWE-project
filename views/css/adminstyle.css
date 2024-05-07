@@ -38,7 +38,7 @@ img{
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-}
+}t
 .add:hover{
   background-color: #ebedef;
 }
