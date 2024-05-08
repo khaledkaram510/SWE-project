@@ -35,7 +35,8 @@
 			header('location: ../user/index.php'); //edit to user page@@@
 		}
 	}
-	
+	//forget password
+
 ?>
 
 <!DOCTYPE html>
@@ -75,7 +76,6 @@
 								</div>
 								<div class="form-group">
 									<label class="fw">Enter Your Password:
-										<a href="javascript:void(0)" class="pull-right">Forgot Password?</a>
 									</label>
 									<input type="password" name="password" class="form-control">
 								</div> 
