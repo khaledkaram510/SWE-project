@@ -1,0 +1,132 @@
+/* styles.css */
+
+.container {
+    margin-top: 50px;
+}
+
+.card {
+    margin-bottom: 30px;
+    border: none; /* Remove card border */
+    border-radius: 10px; /* Add border-radius */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+.card-img-top {
+    max-height: 300px;
+    object-fit: cover;
+    border-top-left-radius: 10px; /* Add border-radius to image */
+    border-top-right-radius: 10px; /* Add border-radius to image */
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff; /* Change button color */
+    border-color: #007bff; /* Change button border color */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Change button color on hover */
+    border-color: #0056b3; /* Change button border color on hover */
+}
+
+.recommendations {
+    margin-top: 30px;
+}
+
+.recommendations h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.recommendations .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recommendations .card img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.recommendations .card-body {
+    padding: 15px;
+}
+
+.recommendations .card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.recommendations .card-text {
+    font-size: 14px;
+}
+.grey-pill {
+    font-size: xx-large;
+    background-color: #212529; /* Grey background color */
+    color: #ffffff; /* Black text color */
+    padding: 10px 40px; /* Adjust padding as needed */
+    border-radius: 10px; /* Adjust border radius to make it pill-shaped */
+    display: inline-block; /* Display as inline-block to fit content */
+  
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+  }
+  .card {
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 20px;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: #FF9900;
+    border-color: #FF9900;
+}
+
+.btn-primary:hover {
+    background-color: #FFA726;
+    border-color: #FFA726;
+}
+.custom-container {
+    max-width: 14000px; /* Adjust the max-width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+    border-radius: 50px;
+}
