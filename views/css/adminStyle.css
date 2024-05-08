@@ -49,3 +49,16 @@ img{
   display: none;
   transition: display 0.5s;
 }
+.card_button{
+  display: flex;
+  justify-content: space-between;
+}
+.edit{
+  background-color: #343a40;
+  width: 80px;
+  margin-right: 10px;
+}
+.delete{
+  width: 80px;
+  margin-left: 10px;
+}

@@ -7,44 +7,35 @@ if(!$con)
 {
   echo "seller Not Connected";
 }
-echo 'hello';
-// echo $_POST['name'];
-echo isset($_GET['name']);
-print_r($_GET);
-  if(isset($_GET['name'])){
-    // echo 'hello from get';
-    // $id=uniqid();
-    $name = $_GET['name'];
-    $name = stripslashes($name);
-		$name = addslashes($name);
-    $description = $_GET['description'];
-    $description = stripslashes($description);
-		$description = addslashes($description);
-    $price = $_GET['price'];
-    $price = (float) $price;
-		// $price = addslashes($price);
-    $image = $_GET['image'];
-    $image = stripslashes($image);
-		$image = addslashes($image);
-    $rate = 0;
-    $ammount = $_GET['ammount'];
-    $ammount = (int) $ammount;
-		// $ammount = addslashes($ammount);
-    $offer = $_GET['offer'];
-    $offer = (int)$offer;
-		// $offer = addslashes($offer);
-    $catagory_name = $_GET['catagory_name'];
-    $catagory_name = stripslashes($catagory_name);
-		$catagory_name = addslashes($catagory_name);
-    $error=$seller->addItem($name ,$description,$price,$image,$rate ,$ammount,$offer,$catagory_name);
+if(isset($_GET['name'])){
+  $name = $_GET['name'];
+  $name = stripslashes($name);
+  $name = addslashes($name);
+  $description = $_GET['description'];
+  $description = stripslashes($description);
+  $description = addslashes($description);
+  $price = $_GET['price'];
+  $price = (float) $price;
+  $image = $_GET['image'];
+  $image = stripslashes($image);
+  $image = addslashes($image);
+  $rate = 0;
+  $ammount = $_GET['ammount'];
+  $ammount = (int) $ammount;
+  $offer = $_GET['offer'];
+  $offer = (int)$offer;
+  $catagory_name = $_GET['catagory_name'];
+  $catagory_name = stripslashes($catagory_name);
+  $catagory_name = addslashes($catagory_name);
+  $error=$seller->addItem($name ,$description,$price,$image,$rate ,$ammount,$offer,$catagory_name);
 
-    // echo $error;
-    if($error == true){
-      header('location:index.php?done=1');
-    }
-    // echo mysqli_num_rows($result);
-    // echo 'hello after';
+  // echo $error;
+  if($error == true){
+    header('location:index.php?done=1');
   }
+  // echo mysqli_num_rows($result);
+  // echo 'hello after';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +51,6 @@ print_r($_GET);
     <div class="container-fluid px-1 py-5 mx-auto">
         <div class="row d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-                <!-- <h3>Request a Demo</h3> -->
                 <!-- <p class="blue-text">Just answer a few questions<br> so that we can personalize the right experience for you.</p> -->
                 <div class="card">
                     <!-- <h5 class="text-center mb-4">Powering world-class companies</h5> -->
@@ -68,24 +58,24 @@ print_r($_GET);
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-6 flex-column d-flex"> 
                               <label class="form-control-label px-3">Product name<span class="text-danger"> *</span></label> 
-                              <input type="text" id="fname" name="name" placeholder="Enter Product name" onblur="validate(1)"> 
+                              <input type="text" id="name" name="name" placeholder="Enter Product name" onblur="validate(1)" required> 
                             </div>
                             <div class="form-group col-sm-6 flex-column d-flex">
                               <label class="form-control-label px-3">Price<span class="text-danger"> *</span></label> 
-                              <input type="number" id="lname" step="0.01" name="price" placeholder="Enter product Price" onblur="validate(2)"> 
+                              <input type="number" id="price" step="0.01" name="price" min="0" placeholder="Enter product Price" onblur="validate(2)" required> 
                             </div>
                         </div>
                         <div class="row justify-content-between text-left">
-                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">offer<span class="text-danger"> *</span></label> <input type="number" id="email" name="offer" placeholder="" onblur="validate(3)"> </div>
-                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">ammount<span class="text-danger"> *</span></label> <input type="number" id="mob" name="ammount" placeholder="" onblur="validate(4)"> </div>
+                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">offer<span class="text-danger"> *</span></label> <input type="number" id="offer" min="0" max="100" name="offer" placeholder="" onblur="validate(3)" required> </div>
+                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">ammount<span class="text-danger"> *</span></label> <input type="number" min="0" id="ammount" name="ammount" placeholder="" onblur="validate(4)" required> </div>
                           
                         </div>
                         <div class="row justify-content-between text-left">
-                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Image src <span class="text-danger"> *</span></label> <input type="text" id="job" name="image" placeholder="" onblur="validate(5)"> </div>
-                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">catagory<span class="text-danger"> *</span></label> <input type="text" id="mob" name="catagory_name" placeholder="" onblur="validate(7)"> </div>
+                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Image src <span class="text-danger"> *</span></label> <input type="text" id="image" name="image" placeholder="" onblur="validate(5)" required> </div>
+                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">catagory<span class="text-danger"> *</span></label> <input type="text" id="catagory_name" name="catagory_name" placeholder="" onblur="validate(6)" required> </div>
                         </div>
                         <div class="row justify-content-between text-left">
-                          <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Write the product description<span class="text-danger"> *</span></label> <textarea id="ans" name="description" cols="50" rows="10" onblur="validate(6)"></textarea></div>
+                          <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Write the product description<span class="text-danger"> *</span></label> <textarea id="description" name="description" cols="50" rows="10" onblur="validate(7)" required></textarea></div>
                         </div>
                         <div class="row justify-content-end">
                             <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">add product</button> </div>

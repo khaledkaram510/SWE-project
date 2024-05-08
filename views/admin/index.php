@@ -5,36 +5,30 @@ $db = new database();
 $con=$db->openConnection();
 if(!$con)
 {
-  echo "seller Not Connected";
+    echo "seller Not Connected";
 }
 $str="SELECT catagory_name from items ORDER BY catagory_name ASC";
 $result = $db->query($str);
-// $arr = mysqli_fetch_array($result);
-
-// print_r($arr);
-// print_r($arr);
-// print_r($arr);
-// print_r($arr);
 function create_cards($selle,$catagoty){
   // $seller = new seller();
-  $result = $selle->listItem($catagoty);
-  
+    $result = $selle->listItem($catagoty);
+    
   // echo'hello';
   // echo $result;
-  if (!$result) {
+    if (!$result) {
     echo '
     <h1>
-      No Items In The Store
+        No Items In The Store
     </h1>
     ';
-  }else{
+    }else{
     echo '<h1>'.$catagoty.'</h1>
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">';
     // $array = mysqli_fetch_array($result);
     // echo $array;
     while($array = mysqli_fetch_array($result)){
     echo '
-      <div class="col mb-5">
+    <div class="col mb-5">
         <div class="card h-100">
             <!-- Product image-->
             <img class="card-img-top" src="'.$array["image"].'" alt="..." />
@@ -51,14 +45,15 @@ function create_cards($selle,$catagoty){
                 </div>
             </div>
             <!-- Product actions-->
-            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+            <div class="card_button card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center"><a class="delete btn  btn-danger" href="">delete</a></div>
+                <div class="text-center"><a class="edit btn btn-secondary" href="update_items.php?image='.$array["image"].'&name='.$array["i_name"].'&price='.$array["price"].'&ammount='.$array["ammount"].'&offer='.$array["offer"].'&description='.$array["description"].'&catagoryName='.$array["catagory_name"].'&rate='.$array["rate"].'&id='.$array["i_id"].'">edit</a></div>
             </div>
         </div>
-      </div> ';
+    </div> ';
     }
     echo '</div>';
-  }
+    }
 }
 ?>
 <!DOCTYPE html>
