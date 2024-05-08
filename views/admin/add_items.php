@@ -2,39 +2,48 @@
 require_once('../../models/seller.php');
 $seller = new seller();
 $db = new database();
-$con=$db->openConnection();
-if(!$con)
-{
+$con = $db->openConnection();
+if (!$con) {
   echo "seller Not Connected";
 }
-if(isset($_GET['submit'])){
-  $name = $_GET['name'];
+if (isset($_POST['submit'])) {
+  $name = $_POST['name'];
   $name = stripslashes($name);
   $name = addslashes($name);
-  $description = $_GET['description'];
+  $description = $_POST['description'];
   $description = stripslashes($description);
   $description = addslashes($description);
-  $price = $_GET['price'];
+  $price = $_POST['price'];
   $price = (float) $price;
-  $image = $_GET['image'];
-  $image = stripslashes($image);
-  $image = addslashes($image);
+  $image = ''; // Initialize image variable
   $rate = 0;
-  $ammount = $_GET['ammount'];
+  $ammount = $_POST['ammount'];
   $ammount = (int) $ammount;
-  $offer = $_GET['offer'];
+  $offer = $_POST['offer'];
   $offer = (int)$offer;
-  $catagory_name = $_GET['catagory_name'];
+  $catagory_name = $_POST['catagory_name'];
   $catagory_name = stripslashes($catagory_name);
   $catagory_name = addslashes($catagory_name);
-  $error=$seller->addItem($name ,$description,$price,$image,$rate ,$ammount,$offer,$catagory_name);
 
-  // echo $error;
-  if($error == true){
+  // Check if file is uploaded
+  if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+    $tmp_name = $_FILES["image"]["tmp_name"];
+    $upload_dir = "../images"; // Directory where images will be stored
+    $file_name = basename($_FILES["image"]["name"]);
+    $target_path = $upload_dir . $file_name;
+    // Move the uploaded file to the target directory
+    if (move_uploaded_file($tmp_name, $target_path)) {
+      $image = $target_path; // Set image path to the target path
+    } else {
+      echo "Error uploading file.";
+    }
+  }
+
+  $error = $seller->addItem($name, $description, $price, $image, $rate, $ammount, $offer, $catagory_name);
+
+  if ($error == true) {
     header('location:index.php?s=1');
   }
-  // echo mysqli_num_rows($result);
-  // echo 'hello after';
 }
 ?>
 <!DOCTYPE html>
@@ -71,7 +80,7 @@ if(isset($_GET['submit'])){
                 <!-- <p class="blue-text">Just answer a few questions<br> so that we can personalize the right experience for you.</p> -->
                 <div class="card">
                     <!-- <h5 class="text-center mb-4">Powering world-class companies</h5> -->
-                    <form action="add_items.php" class="form-card" method="get" >
+                    <form action="add_items.php" class="form-card" method="post" enctype="multipart/form-data">
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-6 flex-column d-flex"> 
                               <label class="form-control-label px-3">Product name<span class="text-danger"> *</span></label> 
@@ -88,14 +97,14 @@ if(isset($_GET['submit'])){
                           
                         </div>
                         <div class="row justify-content-between text-left">
-                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Image src <span class="text-danger"> *</span></label> <input type="text" id="image" name="image" placeholder="" onblur="validate(5)" required> </div>
+                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Image Upload<span class="text-danger"> *</span></label> <input type="file" id="image" name="image" accept="image/*" onchange="previewImage(event)" required> </div>
                           <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">catagory<span class="text-danger"> *</span></label> <input type="text" id="catagory_name" name="catagory_name" placeholder="" onblur="validate(6)" required> </div>
                         </div>
                         <div class="row justify-content-between text-left">
                           <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Write the product description<span class="text-danger"> *</span></label> <textarea id="description" name="description" cols="50" rows="10" onblur="validate(7)" required></textarea></div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="form-group col-sm-6"> <button type="submit" name="submit" class="button_s btn-block btn-primary">add product</button> </div>
+                            <div class="form-group col-sm-6"> <button type="submit" name="submit" class="button_s btn-block btn-primary">Add Product</button> </div>
                         </div>
                     </form>
                 </div>
@@ -110,5 +119,16 @@ if(isset($_GET['submit'])){
     <script src="../js/addItem.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+          var output = document.getElementById('imagePreview');
+          output.src = reader.result;
+          output.style.display = 'block';
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+    </script>
   </body>
 </html>
