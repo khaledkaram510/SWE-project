@@ -1,5 +1,9 @@
 <?php
 require_once('../../models/seller.php');
+
+session_start();
+$_SESSION['name'] = ""; 
+
 $seller = new seller();
 $db = new database();
 $con=$db->openConnection();
@@ -11,49 +15,44 @@ $str="SELECT catagory_name from items ORDER BY catagory_name ASC";
 $result = $db->query($str);
 
 function create_cards($selle,$catagoty){
-  // $seller = new seller();
-  $result = $selle->listItem($catagoty);
+    $result = $selle->listItem($catagoty);
   
-  // echo'hello';
-  // echo $result;
-  if (!$result) {
-    echo '
-    <h1>
-      No Items In The Store
-    </h1>
-    ';
-  }else{
-    echo '<h1 class="grey-pill">'.$catagoty.'</h1>
-    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">';
-    // $array = mysqli_fetch_array($result);
-    // echo $array;
-    while($array = mysqli_fetch_array($result)){
-    echo '
-      <div class="col mb-5">
-        <div class="card h-100">
-            <!-- Product image-->
-            <img class="card-img-top" src="'.$array["image"].'" alt="..." />
-            <!-- Product details-->
-            <div class="card-body p-4">
-                <div class="text-center">
-                    <!-- Product name-->
-                    <h5 class="fw-bolder">'.$array["i_name"].'</h5>
-                    <!-- Product price-->
-                    $'.$array["price"].' </br>
-                    ammount: '.$array["ammount"].'</br>
-                    catagory: '.$array["catagory_name"].'</br>
-                    rate: '.$array["rate"].'
+    if (!$result) {
+        echo '
+        <h1>
+            No Items In The Store
+        </h1>
+        ';
+    } else {
+        echo '<h1 class="grey-pill">'.$catagoty.'</h1>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">';
+        while($array = mysqli_fetch_array($result)){
+            echo '
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img class="card-img-top" src="'.$array["image"].'" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">'.$array["i_name"].'</h5>
+                            <!-- Product price-->
+                            $'.$array["price"].' </br>
+                            ammount: '.$array["ammount"].'</br>
+                            catagory: '.$array["catagory_name"].'</br>
+                            rate: '.$array["rate"].'
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="viewitem.php?item_details='.urlencode(serialize($array)).'">View options</a></div>
+                    </div>
                 </div>
-            </div>
-            <!-- Product actions-->
-            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-            </div>
-        </div>
-      </div> ';
+            </div> ';
+        }
+        echo '</div>';
     }
-    echo '</div>';
-  }
 }
 ?>
 <!DOCTYPE html>
