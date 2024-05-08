@@ -1,6 +1,10 @@
 <?php
 	require_once("../../models/database.php");
 	session_start();
+
+	$db=new database;
+
+	$db->openConnection();
 	
 	if(isset($_POST['submit']))
 	{	
@@ -27,10 +31,10 @@
 		$address = $_POST['address'];
 		$address = stripslashes($address);
 		$address = addslashes($address);
+		
 
-
-		$str="SELECT email from user WHERE email='$email' OR username='$username'";
-		$result=mysqli_query($con,$str);
+		$str="SELECT email from user WHERE email='$email'";
+		$result=$db->query($str);
 		
 		if((mysqli_num_rows($result))>0)	
 		{
@@ -39,11 +43,13 @@
         }
 		else
 		{
-            $str="insert into user set name='$name',username='$username',email='$email',password='$password',phone='$phone'address='$address'";
-			if((mysqli_query($con,$str)))	
+            $str="insert into user set first_name='$name',username='$username',email='$email',password='$password',phone='$phone',address='$address'";
+			if(($db->query($str)))	
 			echo "<center><h3><script>alert('Congrats.. You have successfully registered !!');</script></h3></center>";
-			header('location: welcome.php?q=1');
+			header('location: ../user/index.php');
 		}
+
+		
     }
 ?>
 
