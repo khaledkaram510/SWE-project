@@ -27,6 +27,7 @@ img{
   background-color: #ebedef;
 }
 .a{
+  width: auto important!;
   color: transparent;
 }
 .a:hover{
