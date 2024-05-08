@@ -1,14 +1,23 @@
 <?php
-	require('database.php'); //database connection
+	require_once('../../models/database.php'); //database connection@@@
+
+	$db = new database;
+
+	$db->openConnection();
+
 	// session_start();
 	// if(isset($_SESSION["email"]))
 	// {
 	// 	session_destroy();
 	// }
-	
-	$ref=@$_GET['q'];		
+
+	session_start();
+
+	//$ref=@$_GET['q'];
 	if(isset($_POST['submit']))
 	{	
+
+
 		$email = $_POST['email'];
 		$pass = $_POST['password'];
 		$email = stripslashes($email);
@@ -32,7 +41,7 @@
 			$_SESSION['id']=$row[0];
 			$_SESSION['email']=$row[2];
 			$_SESSION['password']=$row[3];
-			header('location: welcome.php?q=1'); //edit to user page
+			header('location: ../user/index.php?q=1'); //edit to user page@@@
 		}
 	}
 ?>
@@ -43,11 +52,11 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>Login | Online Quiz System</title> <!--edit the title -->
-		<!-- edit the file paths -->
-		<link rel="stylesheet" href="scripts/bootstrap/bootstrap.min.css">
-		<link rel="stylesheet" href="scripts/ionicons/css/ionicons.min.css">
-		<link rel="stylesheet" href="css/form.css">
+		<title>Login</title> <!--edit the title @@@-->
+		<!-- edit the file paths @@@-->
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<link rel="stylesheet" href="../scripts/ionicons/css/ionicons.min.css">
+		<link rel="stylesheet" href="../css/form.css">
         <style type="text/css">
             body{
                   width: 100%;
@@ -59,17 +68,17 @@
                 }
           </style>
 	</head>
-<!-- edit in the filds -->
+<!-- edit in the filds @@@-->
 	<body>
 		<section class="login first grey">
 			<div class="container">
 				<div class="box-wrapper">				
 					<div class="box box-border">
 						<div class="box-body">
-						<center> <h5 style="font-family: Noto Sans;">Login to </h5><h4 style="font-family: Noto Sans;">Online Quiz System</h4></center><br>
+						<center> <h5 style="font-family: Noto Sans;">Login to </h5><h4 style="font-family: Noto Sans;">Your best choice</h4></center><br>
 							<form method="post" action="login.php" enctype="multipart/form-data">
 								<div class="form-group">
-									<label>Enter Your Email Id:</label>
+									<label>Enter Your Email:</label>
 									<input type="email" name="email" class="form-control">
 								</div>
 								<div class="form-group">
@@ -82,7 +91,7 @@
 									<button class="btn btn-primary btn-block" name="submit">Login</button>
 								</div>
 								<div class="form-group text-center">
-									<span class="text-muted">Don't have an account?</span> <a href="register.php">Register</a> Here..
+									<span class="text-muted">Don't have an account?</span> <a href="F:\GIT\SWE-project\views\login_and_rigester\register.php">Register</a> Here..
 								</div>
 							</form>
 						</div>
@@ -90,8 +99,8 @@
 				</div>
 			</div>
 		</section>
-								<!-- edit the file paths -->
-		<script src="js/jquery.js"></script>
-		<script src="scripts/bootstrap/bootstrap.min.js"></script>
+								<!-- edit the file paths @@@-->
+		<script src="../js/jquery.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
 	</body>
 </html>
