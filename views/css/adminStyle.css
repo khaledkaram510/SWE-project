@@ -142,3 +142,37 @@ img{
 .button_s:hover{
   background-color: #2e3135;
 }
+
+/* Some custom styles */
+.item {
+  margin-bottom: 10px;
+}
+/* Ensure footer sticks to the bottom */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40; /* Choose your footer background color */
+  color: white; /* Choose your footer text color */
+  text-align: center;
+  padding: 10px 0;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensure it's above other content */
+  width: 100%;
+}
+
+/* Optional: Adjust padding or margin to accommodate the fixed positioning */
+body {
+  padding-top: 70px; /* Adjust this value based on the height of your navigation bar */
+}

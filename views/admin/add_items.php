@@ -50,6 +50,21 @@ if(isset($_GET['submit'])){
   <link href="../css/adminStyle.css" rel="stylesheet" />
 </head>
   <body>
+           
+  <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#!"> الجمعه ستور</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                        <li class="nav-item dropdown">
+
+            </div>
+        </nav>
+
     <div class="container-fluid px-1 py-5 mx-auto">
         <div class="row d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
@@ -87,6 +102,11 @@ if(isset($_GET['submit'])){
             </div>
         </div>
     </div>
+    <footer class="footer">
+  <div class="container">
+    <p class="m-0">Your footer content here</p>
+  </div>
+</footer>
     <script src="../js/addItem.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
