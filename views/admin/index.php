@@ -12,9 +12,6 @@ $result = $db->query($str);
 function create_cards($selle,$catagoty){
   // $seller = new seller();
     $result = $selle->listItem($catagoty);
-    
-  // echo'hello';
-  // echo $result;
     if (!$result) {
     echo '
     <h1>
@@ -47,7 +44,7 @@ function create_cards($selle,$catagoty){
             <!-- Product actions-->
             <div class="card_button card-footer p-4 pt-0 border-top-0 bg-transparent">
                 <div class="text-center"><a class="delete btn  btn-danger" href="">delete</a></div>
-                <div class="text-center"><a class="edit btn btn-secondary" href="update_items.php?image='.$array["image"].'&name='.$array["i_name"].'&price='.$array["price"].'&ammount='.$array["ammount"].'&offer='.$array["offer"].'&description='.$array["description"].'&catagoryName='.$array["catagory_name"].'&rate='.$array["rate"].'&id='.$array["i_id"].'">edit</a></div>
+                <div class="text-center"><a class="edit btn btn-secondary" href="update_items.php?image='.@$array["image"].'&name='.@$array["i_name"].'&price='.@$array["price"].'&ammount='.@$array["ammount"].'&offer='.@$array["offer"].'&description='.@$array["i_description"].'&catagory_name='.@$array["catagory_name"].'&rate='.@$array["rate"].'&id='.@$array["i_id"].'">edit</a></div>
             </div>
         </div>
     </div> ';

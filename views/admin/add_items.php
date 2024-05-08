@@ -7,7 +7,7 @@ if(!$con)
 {
   echo "seller Not Connected";
 }
-if(isset($_GET['name'])){
+if(isset($_GET['submit'])){
   $name = $_GET['name'];
   $name = stripslashes($name);
   $name = addslashes($name);
@@ -77,8 +77,8 @@ if(isset($_GET['name'])){
                         <div class="row justify-content-between text-left">
                           <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Write the product description<span class="text-danger"> *</span></label> <textarea id="description" name="description" cols="50" rows="10" onblur="validate(7)" required></textarea></div>
                         </div>
-                        <div class="row justify-content-end">
-                            <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">add product</button> </div>
+                        <div class="row justify-content-center">
+                            <div class="form-group col-sm-6"> <button type="submit" name="submit" class="btn-block btn-primary">add product</button> </div>
                         </div>
                     </form>
                 </div>
