@@ -92,28 +92,3 @@ if(isset($_GET['submit'])){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </body>
 </html>
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <form action="" method="post">
-    <input type="text" name="name" placeholder="name" required>
-    <input type="text" name="description" placeholder="description" required>
-    <input type="text" name="price" placeholder="price" required>
-    <input type="text" name="image" placeholder="image" required>
-    <input type="text" name="rate" placeholder="rate">
-    <input type="text" name="ammount" placeholder="ammount" required>
-    <input type="text" name="offer" placeholder="offer" >
-    <input type="text" name="catagory_name" placeholder="catagory_name" required>
-    <input type="submit" value="submit">
-  </form>
-</body>
-</html> -->
-<!-- https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css -->
-<!-- https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js -->
-<!-- https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js -->
-<!-- https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css -->
