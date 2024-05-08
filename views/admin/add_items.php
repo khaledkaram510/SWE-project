@@ -31,7 +31,7 @@ if(isset($_GET['submit'])){
 
   // echo $error;
   if($error == true){
-    header('location:index.php?done=1');
+    header('location:index.php?s=1');
   }
   // echo mysqli_num_rows($result);
   // echo 'hello after';
@@ -42,10 +42,12 @@ if(isset($_GET['submit'])){
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>add new item</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/all.min.css">
   <link rel="stylesheet" href="../css/additems.css">
+  <link href="../css/adminStyle.css" rel="stylesheet" />
 </head>
   <body>
     <div class="container-fluid px-1 py-5 mx-auto">
@@ -78,7 +80,7 @@ if(isset($_GET['submit'])){
                           <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Write the product description<span class="text-danger"> *</span></label> <textarea id="description" name="description" cols="50" rows="10" onblur="validate(7)" required></textarea></div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="form-group col-sm-6"> <button type="submit" name="submit" class="btn-block btn-primary">add product</button> </div>
+                            <div class="form-group col-sm-6"> <button type="submit" name="submit" class="button_s btn-block btn-primary">add product</button> </div>
                         </div>
                     </form>
                 </div>

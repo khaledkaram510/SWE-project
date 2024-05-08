@@ -58,7 +58,17 @@ img{
   width: 80px;
   margin-right: 10px;
 }
+.edit:hover{
+  background-color: #2e3135;
+}
 .delete{
   width: 80px;
   margin-left: 10px;
+}
+.button_s{
+  background-color: #343a40;
+  border: none;
+}
+.button_s:hover{
+  background-color: #2e3135;
 }

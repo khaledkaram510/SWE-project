@@ -7,6 +7,10 @@ if(!$con)
 {
     echo "seller Not Connected";
 }
+if (isset($_GET['d'])){
+    $seller->deleteItem($_GET['d']);
+    header("refresh:0;url=index.php");
+}
 $str="SELECT catagory_name from items ORDER BY catagory_name ASC";
 $result = $db->query($str);
 function create_cards($selle,$catagoty){
@@ -43,7 +47,7 @@ function create_cards($selle,$catagoty){
             </div>
             <!-- Product actions-->
             <div class="card_button card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center"><a class="delete btn  btn-danger" href="">delete</a></div>
+                <div class="text-center"><a class="delete btn  btn-danger" href="index.php?d='.$array["i_id"].'">delete</a></div>
                 <div class="text-center"><a class="edit btn btn-secondary" href="update_items.php?image='.@$array["image"].'&name='.@$array["i_name"].'&price='.@$array["price"].'&ammount='.@$array["ammount"].'&offer='.@$array["offer"].'&description='.@$array["i_description"].'&catagory_name='.@$array["catagory_name"].'&rate='.@$array["rate"].'&id='.@$array["i_id"].'">edit</a></div>
             </div>
         </div>
@@ -60,7 +64,7 @@ function create_cards($selle,$catagoty){
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Shop Homepage - Start Bootstrap Template</title>
+        <title>admin page</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -70,9 +74,9 @@ function create_cards($selle,$catagoty){
         <link href="../css/adminStyle.css" rel="stylesheet" />
     </head>
     <body>
-        <div class="done"><?=$_GET['done']?></div>
+        <div class="done"><?=$_GET['s']?></div>
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="#!">Start Bootstrap</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -99,13 +103,13 @@ function create_cards($selle,$catagoty){
                     </form>
                 </div>
             </div>
-        </nav>
+        </nav> -->
         <!-- Header-->
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                    <h1 class="display-4 fw-bolder">Welcome to admin page</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">you are the fucking admin</p>
                 </div>
             </div>
         </header>

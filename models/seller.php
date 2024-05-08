@@ -64,13 +64,31 @@ class seller
   }
   public function updateItem($id,$row_name,$new_value)
   {
-    $str="UPDATE `item` SET `$row_name`=$new_value WHERE i_id= '$id'";
-    $this->db->query($str);
+    $str="UPDATE `items` SET `$row_name`='$new_value' WHERE i_id= '$id'";
+    $result = $this->db->query($str);
+    if($result){
+      return true;
+      
+    } else {
+      return "Query failed: " . $this->db->error();
+      
+    }
   }
   public function update($table,$id,$row_name,$new_value)
   {
-    $str="UPDATE `$table` SET `$row_name`=$new_value WHERE i_id= '$id'";
-    $this->db->query($str);
+    if ($id === NULL) {
+      echo "ID is NULL";
+      return false;
+    }
+    $str="UPDATE `$table` SET `$row_name`=$new_value WHERE i_id='$id'";
+    $result = $this->db->query($str);
+    if($result){
+      return true;
+      
+    } else {
+      return "Query failed: " . $this->db->error();
+      
+    }
   }
   public function viewProfitTax()
   {

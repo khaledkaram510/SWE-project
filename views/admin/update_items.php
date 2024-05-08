@@ -7,9 +7,8 @@ if(!$con)
 {
   echo "seller Not Connected";
 }
-print_r($_GET);
-$id = $_GET['id'];
-// echo isset($_GET['id'])
+
+@$id = $_GET['id'];
 if(isset($_GET['submit'])){
   $name = $_GET['name'];
   $name = stripslashes($name);
@@ -30,13 +29,16 @@ if(isset($_GET['submit'])){
   $catagory_name = $_GET['catagory_name'];
   $catagory_name = stripslashes($catagory_name);
   $catagory_name = addslashes($catagory_name);
+  $error=$seller->updateItem($id,'i_name',$name);
   $error=$seller->updateItem($id,'i_description',$description);
-  // echo $error;
+  $error=$seller->updateItem($id,'price',$price);
+  $error=$seller->updateItem($id,'image',$image);
+  $error=$seller->updateItem($id,'ammount',$ammount);
+  $error=$seller->updateItem($id,'discount',$offer);
+  $error=$seller->updateItem($id,'catagory_name',$catagory_name);
   if($error == true){
-    header('location:index.php?done=2');
+    header('location:index.php?s=2');
   }
-  // echo mysqli_num_rows($result);
-  // echo 'hello after';
 }
 ?>
 
@@ -45,10 +47,12 @@ if(isset($_GET['submit'])){
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>update <?=$_GET['name']?></title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/all.min.css">
   <link rel="stylesheet" href="../css/additems.css">
+  <link href="../css/adminStyle.css" rel="stylesheet" />
 </head>
   <body>
     <div class="container-fluid px-1 py-5 mx-auto">
@@ -76,12 +80,13 @@ if(isset($_GET['submit'])){
                         <div class="row justify-content-between text-left">
                           <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Image src <span class="text-danger"> *</span></label> <input type="text" id="image" name="image" placeholder="" onblur="validate(5)" value="<?=$_GET['image']?>" required> </div>
                           <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">catagory<span class="text-danger"> *</span></label> <input type="text" id="catagory_name" name="catagory_name" placeholder="" onblur="validate(6)" value="<?=$_GET['catagory_name']?>" required> </div>
+                          <input type="hidden" name="id" value="<?=$_GET['id']?>">
                         </div>
                         <div class="row justify-content-between text-left">
                           <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Write the product description<span class="text-danger"> *</span></label> <textarea id="description" name="description" cols="50" rows="10" onblur="validate(7)" required><?=$_GET['description']?></textarea></div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="form-group col-sm-6"> <button type="submit" name="submit" class="btn-block btn-primary">add product</button> </div>
+                            <div class="form-group col-sm-6"> <button type="submit" name="submit" class="button_s btn-block btn-primary">add product</button> </div>
                         </div>
                     </form>
                 </div>
