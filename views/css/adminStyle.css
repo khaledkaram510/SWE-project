@@ -47,4 +47,5 @@ img{
   text-align: center;
   z-index: 1000;
   display: none;
+  transition: display 0.5s;
 }
