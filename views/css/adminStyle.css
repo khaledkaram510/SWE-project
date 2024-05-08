@@ -22,15 +22,29 @@ img{
   height: 30px;
   margin-right: 5px; 
 }
-
 .add:hover{
   background-color: #ebedef;
 }
 .a{
-  width: auto important!;
+  width: auto ;
   color: transparent;
 }
 .a:hover{
   color: transparent;
 }
-
+.done{
+  left: 50%;
+  transform: translate(-50%);
+  position: absolute;
+  float: inline-end;
+  background-color: #00d404;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 1000;
+  display: none;
+}

@@ -40,7 +40,7 @@ print_r($_GET);
 
     // echo $error;
     if($error == true){
-      header('location: index.php');
+      header('location:index.php?done=1');
     }
     // echo mysqli_num_rows($result);
     // echo 'hello after';
