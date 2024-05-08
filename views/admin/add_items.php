@@ -7,7 +7,7 @@ if(!$con)
 {
   echo "seller Not Connected";
 }
-if(isset($_GET['name'])){
+if(isset($_GET['submit'])){
   $name = $_GET['name'];
   $name = stripslashes($name);
   $name = addslashes($name);
@@ -31,7 +31,7 @@ if(isset($_GET['name'])){
 
   // echo $error;
   if($error == true){
-    header('location:index.php?done=1');
+    header('location:index.php?s=1');
   }
   // echo mysqli_num_rows($result);
   // echo 'hello after';
@@ -42,10 +42,12 @@ if(isset($_GET['name'])){
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>add new item</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/all.min.css">
   <link rel="stylesheet" href="../css/additems.css">
+  <link href="../css/adminStyle.css" rel="stylesheet" />
 </head>
   <body>
     <div class="container-fluid px-1 py-5 mx-auto">
@@ -77,8 +79,8 @@ if(isset($_GET['name'])){
                         <div class="row justify-content-between text-left">
                           <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Write the product description<span class="text-danger"> *</span></label> <textarea id="description" name="description" cols="50" rows="10" onblur="validate(7)" required></textarea></div>
                         </div>
-                        <div class="row justify-content-end">
-                            <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">add product</button> </div>
+                        <div class="row justify-content-center">
+                            <div class="form-group col-sm-6"> <button type="submit" name="submit" class="button_s btn-block btn-primary">add product</button> </div>
                         </div>
                     </form>
                 </div>
@@ -90,28 +92,3 @@ if(isset($_GET['name'])){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </body>
 </html>
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <form action="" method="post">
-    <input type="text" name="name" placeholder="name" required>
-    <input type="text" name="description" placeholder="description" required>
-    <input type="text" name="price" placeholder="price" required>
-    <input type="text" name="image" placeholder="image" required>
-    <input type="text" name="rate" placeholder="rate">
-    <input type="text" name="ammount" placeholder="ammount" required>
-    <input type="text" name="offer" placeholder="offer" >
-    <input type="text" name="catagory_name" placeholder="catagory_name" required>
-    <input type="submit" value="submit">
-  </form>
-</body>
-</html> -->
-<!-- https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css -->
-<!-- https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js -->
-<!-- https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js -->
-<!-- https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css -->

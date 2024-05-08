@@ -1,3 +1,70 @@
+@media (max-width:492px) {
+  .edit,.delete{
+    margin-bottom: 5px;
+  }
+  .card_button{
+    justify-content: center !important;
+    flex-wrap: wrap;
+  }
+}
+@media (min-width:493px) and (max-width:767px){
+  .edit{
+    margin-left: 5px;
+  }
+  .delete{
+    margin-right: 5px;
+  }
+  .edit,.delete{
+    margin-bottom: 5px;
+  }
+  .card_button{
+    justify-content: center !important;
+    flex-wrap: wrap;
+  }
+  /* .container{
+    width:540px;
+  } */
+  
+}
+@media (min-width:768px) and (max-width:991px){
+  .edit{
+    margin-left: 5px;
+  }
+  .delete{
+    margin-right: 5px;
+  }
+  /* .container{
+    width:750px;
+  } */
+}
+/* medium */
+@media (min-width:992px) and (max-width:1199px){
+  .edit{
+    margin-right: 10px;
+  }
+  .delete{
+    margin-left: 10px;
+  }
+  /* .container{
+    width:970px;
+  } */
+}
+
+/* large */
+@media (min-width:1200px){
+  .edit{
+    margin-right: 15px;
+  }
+  .delete{
+    margin-left: 15px;
+  }
+  /* .container{
+    width:1170px;
+  } */
+}
+body{
+  /* update background */
+}
 h1{
   text-align: center;
   padding-bottom: 20px;
@@ -52,13 +119,26 @@ img{
 .card_button{
   display: flex;
   justify-content: space-between;
+  
 }
 .edit{
   background-color: #343a40;
   width: 80px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
+  /* display: inline; */
+}
+.edit:hover{
+  background-color: #2e3135;
 }
 .delete{
   width: 80px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  /* display: inline; */
+}
+.button_s{
+  background-color: #343a40;
+  border: none;
+}
+.button_s:hover{
+  background-color: #2e3135;
 }
