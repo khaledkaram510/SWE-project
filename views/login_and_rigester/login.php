@@ -1,10 +1,10 @@
 <?php
-	require('database.php');
-	session_start();
-	if(isset($_SESSION["email"]))
-	{
-		session_destroy();
-	}
+	require('database.php'); //database connection
+	// session_start();
+	// if(isset($_SESSION["email"]))
+	// {
+	// 	session_destroy();
+	// }
 	
 	$ref=@$_GET['q'];		
 	if(isset($_POST['submit']))
@@ -32,7 +32,7 @@
 			$_SESSION['id']=$row[0];
 			$_SESSION['email']=$row[2];
 			$_SESSION['password']=$row[3];
-			header('location: welcome.php?q=1'); 					
+			header('location: welcome.php?q=1'); //edit to user page
 		}
 	}
 ?>
@@ -43,7 +43,8 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>Login | Online Quiz System</title>
+		<title>Login | Online Quiz System</title> <!--edit the title -->
+		<!-- edit the file paths -->
 		<link rel="stylesheet" href="scripts/bootstrap/bootstrap.min.css">
 		<link rel="stylesheet" href="scripts/ionicons/css/ionicons.min.css">
 		<link rel="stylesheet" href="css/form.css">
@@ -58,7 +59,7 @@
                 }
           </style>
 	</head>
-
+<!-- edit in the filds -->
 	<body>
 		<section class="login first grey">
 			<div class="container">
@@ -89,7 +90,7 @@
 				</div>
 			</div>
 		</section>
-
+								<!-- edit the file paths -->
 		<script src="js/jquery.js"></script>
 		<script src="scripts/bootstrap/bootstrap.min.js"></script>
 	</body>
