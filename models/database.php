@@ -35,6 +35,9 @@ class database
             echo "Connection is not opened";
         }
     }
+    public function error() {
+        return $this->connection->error;
+    }
     public function query($query){
         return mysqli_query($this->connection,$query);
     }

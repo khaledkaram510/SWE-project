@@ -52,8 +52,31 @@ class seller
   }
   public function addItem($name ,$description,$price,$image,$rate ,$ammount,$offer,$catagory_name)
   {
-    $str="INSERT INTO items VALUES  ('$name','$description','$price' , '$image' , '$rate','$ammount','$offer','$catagory_name')";
-    $this->db->query($str);
+    // echo 'hello add item <br>';
+    // echo $image;
+    // echo $name;
+    // echo $description;
+    // echo $price;
+    // echo $rate;
+    // echo $ammount;
+    // echo $offer;
+    // echo $catagory_name;
+
+    // echo $image != null && $name != null && $description != null && $price != null && $rate != null && $ammount != null && $offer != null && $catagory_name != null;
+    // if ($image != null && $name != null && $description != null && $price != null && $rate != null && $ammount != null && $offer != null && $catagory_name != null){
+      // echo 'hello add item <br>';
+      $str="INSERT INTO items (`i_name`, `i_description`, `price`, `image`, `rate`, `ammount`, `discount`, `catagory_name`)  VALUES  ('$name','$description',$price ,'$image' , $rate,$ammount,$offer,'$catagory_name')";
+      $result = $this->db->query($str);
+      if($result){
+        return true;
+        
+      } else {
+        return "Query failed: " . $this->db->error();
+        
+      }
+      // echo 'hello after add item <br>'; 
+    // }else 
+    //   return false;
   }
   public function updateItem($id,$row_name,$new_value)
   {

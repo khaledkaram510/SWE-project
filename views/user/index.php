@@ -72,6 +72,7 @@ function create_cards($selle,$catagoty){
         <link href="../css/addstyle.css" rel="stylesheet" />
     </head>
     <body>
+        
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
