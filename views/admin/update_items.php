@@ -30,7 +30,7 @@ if(isset($_GET['submit'])){
   $catagory_name = $_GET['catagory_name'];
   $catagory_name = stripslashes($catagory_name);
   $catagory_name = addslashes($catagory_name);
-  $error=$seller->updateItem($id,$description,$price,$image,$rate,$ammount,$offer,$catagory_name);
+  $error=$seller->updateItem($id,'i_description',$description);
   // echo $error;
   if($error == true){
     header('location:index.php?done=2');
