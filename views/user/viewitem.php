@@ -4,6 +4,7 @@ require_once('../../models/cart.php');
 
 session_start();
 // $_SESSION['name'] = ""; 
+print_r($_SESSION);
 $seller = new seller();
 $db = new database();
 $con=$db->openConnection();
@@ -12,21 +13,28 @@ if(!$con)
   echo "seller Not Connected";
 }
 if(isset($_GET['item_details']) && !empty($_GET['item_details'])) {
-    $item_details = unserialize(urldecode($_GET['item_details']));
+  echo 'khaled';
+  $item_details = unserialize(urldecode($_GET['item_details']));
     // Access individual item details
     $item_id = $item_details["i_id"]; 
     $item_name = $item_details["i_name"];
     $price = $item_details["price"];
-    $amount = $item_details["ammount"];
+    $ammount = $item_details["ammount"];
     $category = $item_details["catagory_name"];
     $rate = $item_details["rate"];
     $image = $item_details["image"];
     $description = $item_details["i_description"];
-} else {
-    echo "Item details not provided.";
-}
+} else
 if(isset($_GET['quantity']) && !empty($_GET['quantity'])) {
     $quantity = $_GET['quantity'];
+    $item_id = $_GET["i_id"]; 
+    $item_name = $_GET["i_name"];
+    $price = $_GET["price"];
+    $ammount = $_GET["ammount"];
+    $category = $_GET["catagory_name"];
+    $rate = $_GET["rate"];
+    $image = $_GET["image"];
+    $description = $_GET["i_description"];
     $cart = new cart();
     if($cart->addToCart($item_id, $_SESSION['id'],$quantity)){
       echo "Item added to cart successfully.";
@@ -97,19 +105,19 @@ if(isset($_GET['quantity']) && !empty($_GET['quantity'])) {
                 <div class="info">
                   <h4 class="card-title"><?php echo $item_name; ?></h4>
                   <p class="card-text">Price: $<?php echo $price; ?></p>
-                  <p class="card-text">In stock: <?php echo $amount; ?></p>
+                  <p class="card-text">In stock: <?php echo $ammount; ?></p>
                   <p class="card-text">Category: <?php echo $category; ?></p>
                   <p class="card-text">Rate: <?php echo $rate; ?></p>
                   <form action="viewitem.php" class="qnt" method="get">
-                    <input type="hidden" name="id">
-                    <input type="hidden" name="name">
-                    <input type="hidden" name="price">
-                    <input type="hidden" name="ammount">
-                    <input type="hidden" name="catagory">
-                    <input type="hidden" name="rate">
-                    <input type="hidden" name="image">
-                    <input type="hidden" name="description">
-                    <input type="number" id="quantity" class="qnt outline-dark" name="quantity" min="1" value="1" required>
+                    <input type="hidden" name="i_id" value="<?=$item_id?>" >
+                    <input type="hidden" name="i_name" value="<?=$item_name?>" >
+                    <input type="hidden" name="price" value="<?=$price ?>" >
+                    <input type="hidden" name="ammount" value="<?=$ammount?>">
+                    <input type="hidden" name="catagory_name"  value="<?=$category?>">
+                    <input type="hidden" name="rate" value="<?=$rate?>">
+                    <input type="hidden" name="image" value="<?=$image?>">
+                    <input type="hidden" name="i_description" value="<?=$description?>">
+                    <input type="number" id="quantity" class="qnt outline-dark" name="quantity" min="1" max="<?=$ammount?>" value="1" required>
                     <input type="submit" class="btn align-conter btn-outline-dark" value="Add to Cart">
                   </form>
                 </div>
