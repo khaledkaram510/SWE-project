@@ -1,5 +1,6 @@
 <?php
 	require_once("../../models/database.php");
+	require_once('../../models/cart.php');
 	session_start();
 
 	$db=new  database;
@@ -47,8 +48,8 @@
         }
 		else
 		{
-			$cart = new cart();
-			$cart->createCart($email);
+			// $cart = new cart();
+			// $cart->createCart($email);
             $str="insert into user set first_name='$fname',last_name='$lname',username='$username',email='$email',password='$password',phone='$phone',address='$address'";
 			if(($db->query($str)))	
 			echo "<center><h3><script>alert('Congrats.. You have successfully registered !!');</script></h3></center>";
