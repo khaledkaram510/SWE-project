@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
   // Check if file is uploaded
   if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
     $tmp_name = $_FILES["image"]["tmp_name"];
-    $upload_dir = "../images"; // Directory where images will be stored
+    $upload_dir = "../images/"; // Directory where images will be stored
     $file_name = basename($_FILES["image"]["name"]);
     $target_path = $upload_dir . $file_name;
     // Move the uploaded file to the target directory

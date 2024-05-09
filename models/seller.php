@@ -52,7 +52,7 @@ class seller
   }
   public function addItem($name ,$description,$price,$image,$rate ,$ammount,$offer,$catagory_name)
   {
-      $str="INSERT INTO items (`i_name`, `i_description`, `price`, `image`, `rate`, `ammount`, `discount`, `catagory_name`)  VALUES  ('$name','$description',$price ,'$image' , $rate,$ammount,$offer,'$catagory_name')";
+      $str="INSERT INTO items (`i_name`, `i_description`, `price`, `image`, `rate`, `ammount`, `offer`, `catagory_name`)  VALUES  ('$name','$description',$price ,'$image' , $rate,$ammount,$offer,'$catagory_name')";
       $result = $this->db->query($str);
       if($result){
         return true;
@@ -64,7 +64,8 @@ class seller
   }
   public function updateItem($id,$row_name,$new_value)
   {
-    $str="UPDATE `items` SET `$row_name`='$new_value' WHERE i_id= '$id'";
+    echo 'khaled';
+    $str="UPDATE `items` SET `$row_name`='$new_value' WHERE `i_id`=$id";
     $result = $this->db->query($str);
     if($result){
       return true;
@@ -127,7 +128,7 @@ class seller
     
   }
 
-  public function makeDiscount()
+  public function makeoffer()
   {
     
   }

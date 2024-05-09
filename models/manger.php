@@ -44,8 +44,8 @@ class manger{
     $str="UPDATE `item` SET `$row_name`=$new_value WHERE i_id= '$id'";
     $this->db->query($str);
   }
-  public function makeDiscount($item_id,$discount) {
-    $str="UPDATE `item` SET `discount`=$discount WHERE i_id= '$item_id'";
+  public function makeoffer($item_id,$offer) {
+    $str="UPDATE `item` SET `offer`=$offer WHERE i_id= '$item_id'";
     $this->db->query($str);
   }
   public function setmangerID($mangerID) {
