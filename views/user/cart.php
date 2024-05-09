@@ -64,7 +64,8 @@
         <link href="../css/addstyl.css" rel="stylesheet" />
     </head>
     <body>
-        <div class="pop"></div>
+        <div class="popup"></div>
+        <div class="frame"></div>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
