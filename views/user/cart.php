@@ -1,4 +1,3 @@
-khale sssss
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,6 +6,7 @@ khale sssss
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title> Home</title>
+        <link rel="stylesheet" href="../css/addstyl.css">
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -61,7 +61,7 @@ khale sssss
                     <th>Name</th>
                     <th>Amount</th>
                     <th>Price</th>
-                    <th>Action</th>
+                    <th class="action-column">Action</th>
                 </tr>
             </thead>
             <tbody id="cart-body">
@@ -112,7 +112,7 @@ khale sssss
                     <td>${item.name}</td>
                     <td>${item.amount}</td>
                     <td>${item.price}</td>
-                    <td>
+                    <td class="action-column">
                         <button class="btn btn-danger btn-sm" onclick="removeItem('${item.name}')">Remove</button>
                         <button class="btn btn-primary btn-sm" onclick="openChangeAmountModal('${item.name}', ${item.amount})">Change Amount</button>
                     </td>
@@ -168,7 +168,6 @@ khale sssss
 
     <!-- Bootstrap JavaScript bundle -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-        
     
     
     <section class="py-5">
