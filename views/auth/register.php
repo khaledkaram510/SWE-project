@@ -1,6 +1,5 @@
 <?php
 	require_once("../../models/database.php");
-	require_once("../../models/cart.php");
 
 
 	session_start();
