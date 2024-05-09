@@ -5,7 +5,6 @@
     }
     require_once('../../models/seller.php');
     require_once('../../models/cart.php');
-
     session_start();
 
     $seller = new seller();
