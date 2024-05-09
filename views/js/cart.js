@@ -1,27 +1,27 @@
-const cartItems = [
-  { name: "Item 1", amount: 1, price: 10 },
-  { name: "Item 2", amount: 2, price: 20 },
-  { name: "Item 3", amount: 3, price: 30 }
-];
+// const cartItems = [
+//   { name: "Item 1", amount: 1, price: 10 },
+//   { name: "Item 2", amount: 2, price: 20 },
+//   { name: "Item 3", amount: 3, price: 30 }
+// ];
 
 // Function to display cart items
-function displayCart() {
-  const cartBody = document.getElementById("cart-body");
-  cartBody.innerHTML = "";
-  cartItems.forEach(item => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-          <td>${item.name}</td>
-          <td>${item.amount}</td>
-          <td>${item.price}</td>
-          <td>
-              <button class="btn btn-danger btn-sm" onclick="removeItem('${item.name}')">Remove</button>
-              <button class="btn btn-primary btn-sm" onclick="openChangeAmountModal('${item.name}', ${item.amount})">Change Amount</button>
-          </td>
-      `;
-      cartBody.appendChild(row);
-  });
-}
+// function displayCart() {
+//   const cartBody = document.getElementById("cart-body");
+//   cartBody.innerHTML = "";
+//   cartItems.forEach(item => {
+//       const row = document.createElement("tr");
+//       row.innerHTML = `
+//           <td>${item.name}</td>
+//           <td>${item.amount}</td>
+//           <td>${item.price}</td>
+//           <td>
+//               <button class="btn btn-danger btn-sm" onclick="removeItem('${item.name}')">Remove</button>
+//               <button class="btn btn-primary btn-sm" onclick="openChangeAmountModal('${item.name}', ${item.amount})">Change Amount</button>
+//           </td>
+//       `;
+//       cartBody.appendChild(row);
+//   });
+// }
 
 // Function to remove item from cart
 function removeItem(name) {

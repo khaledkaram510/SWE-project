@@ -1,8 +1,53 @@
 <?php
+    require_once('../../models/seller.php');
+    require_once('../../models/cart.php');
+
     session_start();
     // if (!isset($_SESSION['user'])) {
     //     header('Location: login.php');
     // }
+    // $_SESSION['name'] = ""; 
+    // print_r($_SESSION);
+
+    $seller = new seller();
+    $cart = new cart();
+    $db = new database();
+    $con=$db->openConnection();
+    if(!$con)
+    {
+    echo "seller Not Connected";
+    }
+    if (isset($_GET['d'])){
+        $cart->removeFromCart($_GET['i_d'],$_GET['d']);
+        header("refresh:0;url=cart.php");
+    }
+    function listcart($db){
+        $str="SELECT * from user_oreder_items where user_id=".$_SESSION['id']."";
+        $result = $db->query($str);
+        $result = $db->query($str);
+        while ($row = mysqli_fetch_array($result)) {
+            $str="SELECT `i_name`,`price` from items where i_id=".$row['item_id']."";
+            $result2 = $db->query($str);
+            $row2 = mysqli_fetch_array($result2);
+            echo'
+            <tr>
+            <td>'.$row2["i_name"].'</td>
+            <td>'.$row["c_ammount"].'</td>
+            <td>'.$row2["price"].'</td>
+            <td>
+                <a class="delete btn  btn-danger" href="cart.php?d='.$_SESSION['id'].'&i_d='.$row['item_id'].'">delete</a>
+                <button class="btn btn-primary btn-sm" onclick="openChangeAmountModal("'.$row2["i_name"].'", '.$row["c_ammount"].')">Change Amount</button>
+            </td>
+            </tr>';
+        }
+        // if (!$result) {
+        //     return false;
+        // }
+        // if((mysqli_num_rows($result)) == 0){
+        //     return false;
+        // }
+        // return $result;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,9 +64,6 @@
         <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="../bootstrap-icons/font/bootstrap-icons.min.css">
         <script type="text/javascript" src="../bootstrap-5.3.3-dist/js/bootstrap.min.js"> </script>
-
-
-
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet" />
@@ -52,7 +94,6 @@
                         <a href="" class="btn btn_edd btn-outline-dark">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </a>
                     </form>
             </div>
@@ -71,12 +112,13 @@
                 </tr>
             </thead>
             <tbody id="cart-body">
-                listcart();
+                <?php listcart($db); ?>
                 <!-- Cart items will be appended here dynamically -->
             </tbody>
         </table>
         <div class="cart-buttons">
-            <button class="btn btn-primary" onclick="checkout()">Checkout</button>
+            <!-- <button class="btn btn-primary" onclick="checkout()">Checkout</button> -->
+            <a href="checkout.php?u_id='<?=$_SESSION['id']?>'&" class="btn btn-primary">Checkout</a>
         </div>
     </div>
 
@@ -111,6 +153,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="../js/scripts.js"></script>
-        <script src="../js/cart.js"></script>
+        <!-- <script src="../js/cart.js"></script> -->
     </body>
 </html>
