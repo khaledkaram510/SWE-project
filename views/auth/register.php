@@ -67,6 +67,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>Register</title>
+		<link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    	<script type="text/javascript" src="../bootstrap-5.3.3-dist/js/bootstrap.min.js"> </script>
+		<link rel="stylesheet" href="../bootstrap-icons/font/bootstrap-icons.min.css">
 		<link rel="stylesheet" href="../css/bootstrap.min.css">
 		<link rel="stylesheet" href="../scripts/ionicons/css/ionicons.min.css">
 		<link rel="stylesheet" href="../css/form.css">
