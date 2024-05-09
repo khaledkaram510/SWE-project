@@ -28,7 +28,12 @@ if(isset($_GET['item_details']) && !empty($_GET['item_details'])) {
 if(isset($_GET['quantity']) && !empty($_GET['quantity'])) {
     $quantity = $_GET['quantity'];
     $cart = new cart();
-    $cart->addToCart($item_id, ,$quantity);
+    if($cart->addToCart($item_id, $_SESSION['id'],$quantity)){
+      echo "Item added to cart successfully.";
+    }else{
+      echo "Failed to add item to cart. or the item is already in the cart.";
+    
+    }
 }
 ?>
 
