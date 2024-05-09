@@ -3,11 +3,6 @@
     require_once('../../models/cart.php');
 
     session_start();
-    // if (!isset($_SESSION['user'])) {
-    //     header('Location: login.php');
-    // }
-    // $_SESSION['name'] = ""; 
-    // print_r($_SESSION);
 
     $seller = new seller();
     $cart = new cart();
@@ -15,7 +10,7 @@
     $con=$db->openConnection();
     if(!$con)
     {
-    echo "seller Not Connected";
+        echo "seller Not Connected";
     }
     if (isset($_GET['d'])){
         $cart->removeFromCart($_GET['i_d'],$_GET['d']);
@@ -36,19 +31,13 @@
             <td>'.$row2["price"].'</td>
             <td>
                 <a class="delete btn  btn-danger" href="cart.php?d='.$_SESSION['id'].'&i_d='.$row['item_id'].'">delete</a>
-                <button class="btn btn-primary btn-sm" onclick="openChangeAmountModal("'.$row2["i_name"].'", '.$row["c_ammount"].')">Change Amount</button>
+                <button class="btn btn-primary btn-sm" onclick="openChangeAmountModal(\''.$row2["i_name"].'\', '.$row["c_ammount"].')">Change Amount</button>
             </td>
             </tr>';
         }
-        // if (!$result) {
-        //     return false;
-        // }
-        // if((mysqli_num_rows($result)) == 0){
-        //     return false;
-        // }
-        // return $result;
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -101,58 +90,93 @@
 
 
         <div class="container">
-        <h2>Your Cart</h2>
-        <table class="table table-striped cart-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Amount</th>
-                    <th>Price</th>
-                    <th class="action-column">Action</th>
-                </tr>
-            </thead>
-            <tbody id="cart-body">
-                <?php listcart($db); ?>
-                <!-- Cart items will be appended here dynamically -->
-            </tbody>
-        </table>
-        <div class="cart-buttons">
-            <!-- <button class="btn btn-primary" onclick="checkout()">Checkout</button> -->
-            <a href="checkout.php?u_id='<?=$_SESSION['id']?>'&" class="btn btn-primary">Checkout</a>
+            <h2>Your Cart</h2>
+            <table class="table table-striped cart-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Price</th>
+                        <th class="action-column">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-body">
+                    <?php listcart($db); ?>
+                    <!-- Cart items will be appended here dynamically -->
+                </tbody>
+            </table>
+            <div class="cart-buttons">
+                <!-- Checkout button with modal -->
+                <button class="btn btn-primary" onclick="openCheckoutModal()">Checkout</button>
+            </div>
         </div>
-    </div>
 
-    <!-- Modal for changing amount -->
-    <div class="modal fade" id="changeAmountModal" tabindex="-1" aria-labelledby="changeAmountModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="changeAmountModalLabel">Change Amount</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <label for="newAmount">New Amount:</label>
-                    <input type="number" id="newAmount" class="form-control">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="updateAmount()">Save changes</button>
+        <!-- Checkout modal -->
+        <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="checkoutModalLabel">Checkout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" class="form-control mb-3">
+                        <label for="paymentMethod">Payment Method:</label>
+                        <select id="paymentMethod" class="form-control mb-3" onchange="showVisaInput()">
+                            <option value="onArrival">On Arrival</option>
+                            <option value="visa">Visa</option>
+                        </select>
+                        <div id="visaInput" style="display: none;">
+                            <label for="visaNumber">Visa Number:</label>
+                            <input type="text" id="visaNumber" class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" onclick="openCheckoutModal()">Checkout</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-            </div>
-        </section>
-        <!-- Footer-->
-        <footer class="footer bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; team ابو جلابيه واعوانه</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="../js/scripts.js"></script>
-        <!-- <script src="../js/cart.js"></script> -->
+
+        <!-- JavaScript to handle modal and payment method -->
+        <script>
+            function openCheckoutModal() {
+                $('#checkoutModal').modal('show');
+            }
+
+            function showVisaInput() {
+                var paymentMethod = document.getElementById("paymentMethod").value;
+                if (paymentMethod === "visa") {
+                    document.getElementById("visaInput").style.display = "block";
+                } else {
+                    document.getElementById("visaInput").style.display = "none";
+                }
+            }
+
+            function proceedToCheckout() {
+                var address = document.getElementById("address").value;
+                var paymentMethod = document.getElementById("paymentMethod").value;
+                var visaNumber = "";
+                if (paymentMethod === "visa") {
+                    visaNumber = document.getElementById("visaNumber").value;
+                }
+                
+                // Here you can perform further actions, like sending data to the server
+                // Example: You can use AJAX to send the address, payment method, and visa number to the server for processing.
+                // After processing, you can show a success message or redirect the user to a success page.
+                // For now, I'm just logging the data to the console.
+                console.log("Address: " + address);
+                console.log("Payment Method: " + paymentMethod);
+                console.log("Visa Number: " + visaNumber);
+
+                // Close the modal
+                $('#checkoutModal').modal('hide');
+            }
+        </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     </body>
 </html>
