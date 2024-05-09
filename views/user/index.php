@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['logged'])) {
+    header('Location: ../auth/login.php');
+}
 require_once('../../models/seller.php');
 
 session_start();

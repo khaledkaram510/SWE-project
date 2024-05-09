@@ -1,11 +1,11 @@
 <?php
+    session_start();
+    if (!isset($_SESSION['logged'])) {
+        header('Location: ../auth/login.php');
+    }
     require_once('../../models/seller.php');
     require_once('../../models/cart.php');
 
-    session_start();
-    // if (!isset($_SESSION['user'])) {
-    //     header('Location: login.php');
-    // }
     // $_SESSION['name'] = ""; 
     // print_r($_SESSION);
 
@@ -24,7 +24,8 @@
     function listcart($db){
         $str="SELECT * from user_oreder_items where user_id=".$_SESSION['id']."";
         $result = $db->query($str);
-        $result = $db->query($str);
+        // $result = $db->query($str);
+        
         while ($row = mysqli_fetch_array($result)) {
             $str="SELECT `i_name`,`price` from items where i_id=".$row['item_id']."";
             $result2 = $db->query($str);
@@ -118,7 +119,7 @@
         </table>
         <div class="cart-buttons">
             <!-- <button class="btn btn-primary" onclick="checkout()">Checkout</button> -->
-            <a href="checkout.php?u_id='<?=$_SESSION['id']?>'&" class="btn btn-primary">Checkout</a>
+            <a href="checkout.php" class="btn btn-primary">Checkout</a>
         </div>
     </div>
 
