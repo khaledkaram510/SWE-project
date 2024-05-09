@@ -6,7 +6,9 @@
   require_once '../../partials/template.php';
   // $template = new Template();
   // echo $template->render('checkout');
+  function print_checkout($db){
 
+  }
 ?>
 
 
