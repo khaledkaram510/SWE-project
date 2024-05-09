@@ -4,7 +4,8 @@ require_once('../../models/cart.php');
 
 session_start();
 // $_SESSION['name'] = ""; 
-print_r($_SESSION);
+// print_r($_SESSION);
+// print_r($_GET);
 $seller = new seller();
 $db = new database();
 $con=$db->openConnection();
@@ -13,7 +14,7 @@ if(!$con)
   echo "seller Not Connected";
 }
 if(isset($_GET['item_details']) && !empty($_GET['item_details'])) {
-  echo 'khaled';
+  // echo 'khaled';
   $item_details = unserialize(urldecode($_GET['item_details']));
     // Access individual item details
     $item_id = $item_details["i_id"]; 
@@ -36,12 +37,7 @@ if(isset($_GET['quantity']) && !empty($_GET['quantity'])) {
     $image = $_GET["image"];
     $description = $_GET["i_description"];
     $cart = new cart();
-    if($cart->addToCart($item_id, $_SESSION['id'],$quantity)){
-      echo "Item added to cart successfully.";
-    }else{
-      echo "Failed to add item to cart. or the item is already in the cart.";
-    
-    }
+    $result=$cart->addToCart($item_id, $_SESSION['id'],$quantity);
 }
 ?>
 
@@ -64,6 +60,7 @@ if(isset($_GET['quantity']) && !empty($_GET['quantity'])) {
     </head>
     <body>
         <!-- Navigation-->
+        <div class="done"><?=@$result?></div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="#!"> store</a>
@@ -145,6 +142,7 @@ if(isset($_GET['quantity']) && !empty($_GET['quantity'])) {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="../js/scripts.js"></script>
+        <script src="../js/script2.js"></script>
     </body>
 </html>
 

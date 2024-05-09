@@ -29,7 +29,7 @@ class cart
             return "The item is already in the cart.";
         } else {
             // The item is not in the cart, add it
-            $query = "INSERT INTO `user_oreder_items`(`user_id`, `item_id`, `quantity`) VALUES ('$user_id', '$item_id', '$quantity')";
+            $query = "INSERT INTO `user_oreder_items`(`user_id`, `item_id`, `c_ammount`) VALUES ('$user_id', '$item_id', '$quantity')";
             $result = $this->db->query($query);
             if ($result) {
                 return true;

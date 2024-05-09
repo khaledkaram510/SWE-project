@@ -109,3 +109,24 @@ h4{
   width: 110px;
   margin-bottom: 5px;
 }
+.red{
+  background-color: #d40027;
+}
+.done{
+  left: 50%;
+  transform: translate(-50%);
+  position: fixed;
+  float: inline-end;
+  background-color: #00d404;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 60px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 1000;
+  display: none;
+  transition: display 0.5s;
+  pointer-events: none;
+}
