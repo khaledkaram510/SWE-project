@@ -5,8 +5,7 @@
     }
     require_once('../../models/seller.php');
     require_once('../../models/cart.php');
-
-    session_start();
+    // session_start();
 
     $seller = new seller();
     $cart = new cart();
@@ -181,8 +180,8 @@
                 $('#checkoutModal').modal('hide');
             }
         </script>
-        
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="../js/jquery.min.js"></script>
 
     </body>
 </html>
