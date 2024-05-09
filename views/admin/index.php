@@ -69,7 +69,7 @@ function create_cards($selle,$catagoty){
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
-  
+        <link rel="stylesheet" href="../bootstrap-icons/font/bootstrap-icons.min.css">
         <script type="text/javascript" src="../bootstrap-5.3.3-dist/js/bootstrap.min.js"> </script>
 
 

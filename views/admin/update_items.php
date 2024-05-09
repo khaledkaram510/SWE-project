@@ -63,7 +63,7 @@ if(isset($_POST['submit'])){
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>update <?=$_GET['name']?></title>
   <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
-  
+  <link rel="stylesheet" href="../bootstrap-icons/font/bootstrap-icons.min.css">
   <script type="text/javascript" src="../bootstrap-5.3.3-dist/js/bootstrap.min.js"> </script>
 
 

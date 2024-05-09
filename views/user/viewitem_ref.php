@@ -26,10 +26,8 @@ if(isset($_GET['item_details']) && !empty($_GET['item_details'])) {
     <title>View Item</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
-  
     <script type="text/javascript" src="../bootstrap-5.3.3-dist/js/bootstrap.min.js"> </script>
-
-
+    <link rel="stylesheet" href="../bootstrap-icons/font/bootstrap-icons.min.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles -->
     <link href="../css/viewitem.css" rel="stylesheet">
