@@ -2,15 +2,19 @@
 	require_once("../../models/database.php");
 	session_start();
 
-	$db=new database;
+	$db=new  database;
 
 	$db->openConnection();
 	
 	if(isset($_POST['submit']))
 	{	
-		$name = $_POST['name'];
-		$name = stripslashes($name);
-		$name = addslashes($name);
+		$fname = $_POST['first_name'];
+		$fname = stripslashes($fname);
+		$fname = addslashes($fname);
+
+		$lname = $_POST['last_name'];
+		$lname = stripslashes($lname);
+		$lname = addslashes($lname);
 		
 		$username = $_POST['username'];
 		$username = stripslashes($username);
@@ -43,13 +47,15 @@
         }
 		else
 		{
-            $str="insert into user set first_name='$name',username='$username',email='$email',password='$password',phone='$phone',address='$address'";
+			$cart = new cart();
+			$cart->createCart($email);
+            $str="insert into user set first_name='$fname',last_name='$lname',username='$username',email='$email',password='$password',phone='$phone',address='$address'";
 			if(($db->query($str)))	
 			echo "<center><h3><script>alert('Congrats.. You have successfully registered !!');</script></h3></center>";
-			header('location: ../user/index.php');
+			header('location: login.php');
 		}
 
-
+		
     }
 ?>
 
@@ -81,14 +87,18 @@
 				<div class="box-wrapper">				
 					<div class="box box-border">
 						<div class="box-body">
-							<center> <h5 style="font-family: Noto Sans;">Register to </h5><h4 style="font-family: Noto Sans;">jomعa store</h4></center><br>
+							<center> <h5 style="font-family: Noto Sans;">Register to </h5><h4 style="font-family: Noto Sans;">Your best choice</h4></center><br>
 							<form method="post" action="register.php" enctype="multipart/form-data">
 								
 								<div class="form-group">
-									<label>Enter Your name:</label>
-									<input type="text" name="name" class="form-control" required />
+									<label>First name:</label>
+									<input type="text" name="first_name" class="form-control" placeholder="Enter Your First name" required/>
 								</div>
-                                <div class="form-group">
+								<div class="form-group">
+									<label>Last name:</label>
+									<input type="text" name="last_name" class="form-control" placeholder="Enter Your Last name" required />
+								</div>
+                <div class="form-group">
 									<label>Enter Your Username:</label>
 									<input type="text" name="username" class="form-control" required />
 								</div>

@@ -2,7 +2,8 @@
 require_once('../../models/seller.php');
 
 session_start();
-$_SESSION['name'] = ""; 
+// $_SESSION['name'] = ""; 
+// print_r($_SESSION);
 
 $seller = new seller();
 $db = new database();
@@ -16,7 +17,6 @@ $result = $db->query($str);
 
 function create_cards($selle,$catagoty){
     $result = $selle->listItem($catagoty);
-  
     if (!$result) {
         echo '
         <h1>
@@ -69,7 +69,7 @@ function create_cards($selle,$catagoty){
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet" />
-        <link href="../css/addstyle.css" rel="stylesheet" />
+        <link href="../css/addstyl.css" rel="stylesheet" />
     </head>
     <body>
         

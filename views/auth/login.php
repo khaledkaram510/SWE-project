@@ -22,10 +22,14 @@ if (isset($_POST['submit'])) {
     } else {
         $_SESSION['logged'] = $email;
         $row = mysqli_fetch_array($result);
-        $_SESSION['name'] = $row[1];
-        $_SESSION['id'] = $row[0];
-        $_SESSION['email'] = $row[2];
-        $_SESSION['password'] = $row[3];
+        $_SESSION['id'] = $row["ID"];
+        $_SESSION['first_name'] = $row["first_name"];
+        $_SESSION['last_name'] = $row["last_name"];
+        $_SESSION['username'] = $row["username"];
+        $_SESSION['email'] = $row["email"];
+        $_SESSION['password'] = $row["password"];
+        $_SESSION['phone'] = $row["phone"];
+        $_SESSION['address'] = $row["address"];
         header('location: ../user/index.php'); // Edit to user page
     }
 }
@@ -40,12 +44,6 @@ if (isset($_POST['submit'])) {
     <title>Login</title> <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../scripts/ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="../css/form.css">
-    <style type="text/css">
-        body {
-            width: 100%;
-            background: url(image/book.png) center center no-repeat fixed cover;
-        }
-    </style>
 </head>
 <body>
 <section class="login first grey">
@@ -65,12 +63,10 @@ if (isset($_POST['submit'])) {
                         ?>
                         <div class="form-group">
                             <label>Enter Your Email:</label>
-                            <input type="email" name="email"
-                                   class="form-control <?php echo isset($errorMessage) && strpos($errorMessage, 'email') !== false ? 'is-invalid' : ''; ?>"> </div>
+                            <input type="email" name="email" class="form-control <?php echo isset($errorMessage) && strpos($errorMessage, 'email') !== false ? 'is-invalid' : ''; ?>"> </div>
                         <div class="form-group">
                             <label class="fw">Enter Your Password:</label>
-                            <input type="password" name="password"
-                                   class="form-control <?php echo isset($errorMessage) ? 'is-invalid' : ''; ?>"> </div>
+                            <input type="password" name="password" class="form-control <?php echo isset($errorMessage) ? 'is-invalid' : ''; ?>"> </div>
                         <div class="form-group text-right">
                             <button class="btn btn-primary btn-block" name="submit">Login</button>
                         </div>
