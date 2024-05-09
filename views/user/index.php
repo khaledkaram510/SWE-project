@@ -76,7 +76,6 @@ function create_cards($selle,$catagoty){
         <link href="../css/addstyl.css" rel="stylesheet" />
     </head>
     <body>
-        
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
@@ -100,7 +99,6 @@ function create_cards($selle,$catagoty){
                         <a href="cart.php" class="btn btn-outline-dark">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </a>
                     </form>
 
