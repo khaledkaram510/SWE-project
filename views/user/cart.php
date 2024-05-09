@@ -1,4 +1,8 @@
 <?php
+    session_start();
+    if (!isset($_SESSION['logged'])) {
+        header('Location: ../auth/login.php');
+    }
     require_once('../../models/seller.php');
     require_once('../../models/cart.php');
 
@@ -19,7 +23,8 @@
     function listcart($db){
         $str="SELECT * from user_oreder_items where user_id=".$_SESSION['id']."";
         $result = $db->query($str);
-        $result = $db->query($str);
+        // $result = $db->query($str);
+        
         while ($row = mysqli_fetch_array($result)) {
             $str="SELECT `i_name`,`price` from items where i_id=".$row['item_id']."";
             $result2 = $db->query($str);
@@ -59,7 +64,7 @@
         <link href="../css/addstyl.css" rel="stylesheet" />
     </head>
     <body>
-        
+        <div class="pop"></div>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
