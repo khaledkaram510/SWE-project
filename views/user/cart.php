@@ -1,4 +1,3 @@
-
 <?php
     session_start();
     // if (!isset($_SESSION['user'])) {
@@ -13,6 +12,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title> Home</title>
+        <link rel="stylesheet" href="../css/addstyl.css">
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -67,7 +67,7 @@
                     <th>Name</th>
                     <th>Amount</th>
                     <th>Price</th>
-                    <th>Action</th>
+                    <th class="action-column">Action</th>
                 </tr>
             </thead>
             <tbody id="cart-body">
