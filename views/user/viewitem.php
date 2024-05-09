@@ -1,8 +1,12 @@
 <?php
+session_start();
+if (!isset($_SESSION['logged'])) {
+    header('Location: ../auth/login.php');
+}
 require_once('../../models/seller.php');
 require_once('../../models/cart.php');
 
-session_start();
+// session_start();
 // $_SESSION['name'] = ""; 
 // print_r($_SESSION);
 // print_r($_GET);

@@ -130,3 +130,27 @@ h4{
   transition: display 0.5s;
   pointer-events: none;
 }
+/* addstyl.css */
+.cart-table {
+  margin-top: 20px;
+}
+
+.cart-buttons {
+  margin-top: 20px;
+}
+
+.btn-primary {
+  background-color: #212529;
+  border-color: #212529;
+}
+
+.action-column {
+  text-align: right;
+}
+td:nth-child(4){
+  display: flex;
+  justify-content: flex-end;
+}
+.popup{
+  
+}
